@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:12:52 by diana             #+#    #+#             */
-/*   Updated: 2024/12/22 10:26:11 by diana            ###   ########.fr       */
+/*   Updated: 2024/12/23 21:36:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 #include "structures.h"
 #include <stdio.h>
 #include <unistd.h>
+
+int	get_map_height(t_vars *vars)
+{
+	int	height;
+
+	height = 0;
+	while (vars->map[height])
+		height++;
+	return (height);
+}
+
 
 int main(int argc, char **argv)
 {
@@ -26,13 +37,14 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	vars.mlx = mlx_init();
-	
 	vars.map = read_map(argv[1]);
+	///function to check error map
 	load_images(&vars);
-	printf("%d\n", vars.img_width);
-	vars.win = mlx_new_window(vars.mlx, 12 * vars.img_width, 5 * vars.img_heigth, "so_long");
+	vars.map_width = ft_strlen(vars.map[0]) * vars.img_width;
+	vars.map_height = get_map_height(&vars) * vars.img_heigth;
+	vars.win = mlx_new_window(vars.mlx,  vars.map_width, vars.map_height, "so_long");
 	render_map(&vars);
-	
+	mlx_key_hook(vars.win, handle_keypress, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

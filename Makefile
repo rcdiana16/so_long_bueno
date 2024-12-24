@@ -6,7 +6,7 @@
 #    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/11 18:30:33 by diana             #+#    #+#              #
-#    Updated: 2024/12/16 17:57:02 by diana            ###   ########.fr        #
+#    Updated: 2024/12/23 21:35:26 by diana            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ LIBFT_LIB = $(LIBFT_PATH)libft.a
 SRC =	main.c \
 		load_images.c \
 		map_utils.c \
+		move_game.c \
 
 OBJ = $(SRC:.c=.o)
 

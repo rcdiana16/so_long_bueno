@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:09:23 by diana             #+#    #+#             */
-/*   Updated: 2024/12/22 10:02:21 by diana            ###   ########.fr       */
+/*   Updated: 2024/12/23 19:42:43 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
 
 /*
 static size_t	count_rows(char *file)
@@ -38,6 +39,7 @@ static size_t	count_rows(char *file)
 	return (rows);
 }
 */ 
+
 
 char **read_map(char *file)
 {
@@ -77,7 +79,7 @@ void	render_map(t_vars *vars)
 	{
 		x = 0;
 		
-		while (vars->map[y][x] !='\0')
+		while (vars->map[y][x])//tengo que dejar tanto la [y] como la [x]
 		{
 			if (vars->map[y][x] == '1')
 			{
@@ -87,16 +89,21 @@ void	render_map(t_vars *vars)
 			else if (vars->map[y][x] == '0')
 			{
 				mlx_put_image_to_window(vars->mlx, vars->win, \
-			  vars->img.background, x * vars->img_width, y * vars->img_heigth);
-
+			  vars->img.background, x * vars->img_width, \
+			  y * vars->img_heigth);
 			}
 				
 			else if (vars->map[y][x] == 'C')
+			{
 				mlx_put_image_to_window(vars->mlx, vars->win, \
-			  vars->img.collectible, x * vars->img_width, y * vars->img_heigth);
+			  vars->img.collectible, x * vars->img_width, \
+			  y * vars->img_heigth);
+			}
 			else if (vars->map[y][x] == 'E')
+			{
 				mlx_put_image_to_window(vars->mlx, vars->win, \
 			  vars->img.exit, x * vars->img_width, y * vars->img_heigth);
+			}
 			else if (vars->map[y][x] == 'P')
 			{
 				mlx_put_image_to_window(vars->mlx, vars->win, \

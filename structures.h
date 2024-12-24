@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:33 by diana             #+#    #+#             */
-/*   Updated: 2024/12/21 20:50:27 by diana            ###   ########.fr       */
+/*   Updated: 2024/12/23 19:16:23 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ typedef struct s_vars{
 	int		map_height;//numero de filas
 	int		img_width;
 	int		img_heigth;
-	/*void	*img_background;
-	void	*img_wall;
-	void	*img_collectible;
-	void	*img_exit;
-	void	*img_player;*/
 	int		player_x;
 	int		player_y;
 	int		moves;
