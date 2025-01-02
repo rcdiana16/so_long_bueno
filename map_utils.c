@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:09:23 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 18:00:08 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 18:27:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,16 @@ void	render_tile_other(t_vars *vars, char tile, int x, int y)
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.collectible, \
 		x * vars->img_width, y * vars->img_heigth);
-	//	vars->collectables++;
 	}
 	else if (tile == 'E')
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.exit, x \
 		* vars->img_width, y * vars->img_heigth);
-	//	vars->exitcount++;
 	}
 	else if (tile == 'P')
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img.player, x \
 		* vars->img_width, y * vars->img_heigth);
-	//	vars->playercount++;
 	}
 }
 

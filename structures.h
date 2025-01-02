@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:33 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 18:03:12 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 19:07:22 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ typedef struct s_vars{
 
 	void	*mlx;// lo mismo que *mlxpointer?
 	void	*win;//lo mismo que *winpointer?
-	int		playercount;
-	int		columncount;
 	int		counter;
 	t_images img;
 	char	**map;
@@ -36,13 +34,13 @@ typedef struct s_vars{
 	int		map_height;//numero de filas
 	int		img_width;
 	int		img_heigth;
-	int		player_x;//lo uso? x_axis?
-	int		player_y;// lo uso? y_asis?
+	int		player_x;
+	int		player_y;
 	int		moves;//util?
-	int		collectables;
-	int		exit_open;// lo mismo que exitcount?
-	int		game_over;
-	int		won;
+	//int		collectables;
+	int		exit_open;//a utilizar
+	int		game_over;//a utilizar
+	int		won;//a utilizar
 	int		exitcount;
 	int		count_e;
 	int		count_c;

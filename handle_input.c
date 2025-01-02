@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:31:49 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 18:01:28 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 19:16:14 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@ static int	keyboard_ws(t_vars *game, int movement);
 
 static int handle_up(t_vars *game, int x, int y)
 {
-	if (game->map[y - 1][x] != '1')
+	if (game->map[y - 1][x] != '1' && game->map[y - 1][x] != 'E')
 	{
+		if (game->map[y - 1][x] == 'C')
+			game->count_c--;
 		game->map[y - 1][x] = 'P';
 		game->map[y][x] = '0';
 		game->player_y -= 1;
+		game->counter++;
+		ft_printf("counter:%d\n", game->counter);
+	}
+	if (game->map[y -1][x] == 'E' && game->count_c == 0)
+	{
+		ft_printf("You won\n");
+		exit (1);
 	}
 	render_map(game);
 	//printf("steps:%i\n", game->counter);
@@ -37,11 +46,20 @@ static int handle_up(t_vars *game, int x, int y)
 
 static int	handle_down(t_vars *game, int x, int y)
 {
-	if (game->map[y + 1][x] != '1')
+	if (game->map[y + 1][x] != '1' && game->map[y + 1][x] != 'E')
 	{
+		if (game->map[y + 1][x] == 'C')
+			game->count_c--;
 		game->map[y + 1][x] = 'P';
 		game->map[y][x] = '0';
 		game->player_y += 1;
+		game->counter++;
+		ft_printf("counter:%d\n", game->counter);
+	}
+	if (game->map[y + 1][x] == 'E' && game->count_c == 0)
+	{
+		ft_printf("You won\n");
+		exit (1);
 	}
 	render_map(game);
 	//printf("steps:%i\n", game->counter);
@@ -51,26 +69,44 @@ static int	handle_down(t_vars *game, int x, int y)
 
 static int handle_left(t_vars *game, int x, int y)
 {
-	if (game->map[y][x - 1] != '1')
+	if (game->map[y][x - 1] != '1' && game->map[y][x - 1] != 'E')
 	{
+		if (game->map[y][x - 1] == 'C')
+			game->count_c--;
 		game->map[y][x - 1] = 'P';
 		game->map[y][x] = '0';
 		game->player_x -= 1;
+		game->counter++;
+		ft_printf("counter:%d\n", game->counter);
+	}
+	if (game->map[y][x - 1] == 'E' && game->count_c == 0)
+	{
+		ft_printf("You won\n");
+		exit (1);
 	}
 	render_map(game);
-	//printf("steps:%i\n", game->counter);
+		//printf("steps:%i\n", game->counter);
 	//printf("collectables remaining: %i\n", game->collectables);
 	return (0);
 }
 
 static int	handle_right(t_vars *game, int x, int y)
 {
-	if (game->map[y][x + 1] != '1')
+	if (game->map[y][x + 1] != '1' && game->map[y][x+ 1] != 'E')
 	{
+		if (game->map[y][x + 1] == 'C')
+			game->count_c--;
 		game->map[y][x + 1] = 'P';
 		game->map[y][x] = '0';
 
 		game->player_x += 1;
+		game->counter++;
+		ft_printf("counter:%d\n", game->counter);
+	}
+	if (game->map[y][x + 1] == 'E' && game->count_c == 0)
+	{
+		ft_printf("You won\n");
+		exit (1);
 	}
 	render_map(game);
 	//printf("steps:%i\n", game->counter);
@@ -87,14 +123,10 @@ static int	keyboard_ad(t_vars *game, int keycode)
 	y = game->player_y;
 	if (keycode == 0)
 	{
-		ft_printf("keycode value: %d\n", keycode);
-		ft_printf("player_x = %d\n player_y = %d\n", x, y);
 		return (handle_left(game, x, y ));
 	}
 	else if (keycode == 2)
 	{
-		ft_printf("keycode value: %d\n", keycode);
-		ft_printf("player_x = %d\n player_y = %d\n", x, y);
 		return (handle_right(game, x, y));
 	}
 	return (1);
@@ -120,6 +152,7 @@ static int	keyboard_ws(t_vars *game, int keycode)
 
 int	handle_keypress(int keycode, t_vars *game)
 {
+	ft_printf("collectables:%d\n", game->count_c);
 	if (keycode == 53)
 		mlx_destroy_window(game->mlx, game->win);
 	if (keycode == 13)

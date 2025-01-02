@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:12:52 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 18:08:02 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 19:12:03 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,14 @@ int main(int argc, char **argv)
 		//exit(1);
 	check_errors(&vars);
 	find_p_y_start(&vars);
+	vars.counter = 0;
 	vars.mlx = mlx_init();
 	load_images(&vars);
 	vars.map_width = ft_strlen(vars.map[0]) * vars.img_width;
 	vars.map_height = get_map_height(&vars) * vars.img_heigth;
 	vars.win = mlx_new_window(vars.mlx,  vars.map_width, vars.map_height, \
 	"so_long");
+	
 	render_map(&vars);
 	mlx_key_hook(vars.win, handle_keypress, &vars);
 	mlx_loop(vars.mlx);

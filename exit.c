@@ -1,26 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 17:18:29 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 18:55:19 by diana            ###   ########.fr       */
+/*   Created: 2025/01/02 18:27:09 by diana             #+#    #+#             */
+/*   Updated: 2025/01/02 18:27:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "structures.h"
-
-int	correct_move(t_vars *game, int x, int y)
-{
-	if (game->map[y][x] == 'E')
-	{
-		if (game->count_c != 0)
-			return (0);
-		printf("\nYou have won, Congratulations!\n");
-		exit(1);
-	}
-	return (1);
-}
