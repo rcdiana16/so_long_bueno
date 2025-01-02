@@ -6,7 +6,7 @@
 #    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/11 18:30:33 by diana             #+#    #+#              #
-#    Updated: 2024/12/23 21:35:26 by diana            ###   ########.fr        #
+#    Updated: 2024/12/30 19:09:58 by diana            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 MLX_PATH = mlx/
 
@@ -29,7 +29,8 @@ LIBFT_LIB = $(LIBFT_PATH)libft.a
 SRC =	main.c \
 		load_images.c \
 		map_utils.c \
-		move_game.c \
+		error.c \
+		handle_input.c \
 
 OBJ = $(SRC:.c=.o)
 
