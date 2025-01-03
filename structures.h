@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:33 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 19:07:22 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 22:45:09 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ typedef struct s_vars{
 	int		player_y;
 	int		moves;//util?
 	//int		collectables;
-	int		exit_open;//a utilizar
-	int		game_over;//a utilizar
-	int		won;//a utilizar
+	int		rows;//si la utilizo
 	int		exitcount;
 	int		count_e;
 	int		count_c;

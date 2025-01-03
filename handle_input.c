@@ -6,163 +6,155 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:31:49 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 19:16:14 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 23:06:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "structures.h"
 
-static int handle_up(t_vars *game, int x, int y);
-static int	handle_down(t_vars *game, int x, int y);
-static int handle_left(t_vars *game, int x, int y);
-static int	handle_right(t_vars *game, int x, int y);
-int	handle_keypress(int keycode, t_vars *game);
-static int	keyboard_ad(t_vars *game, int movement);
-static int	keyboard_ws(t_vars *game, int movement);
+static int handle_up(t_vars *vars, int x, int y);
+static int	handle_down(t_vars *vars, int x, int y);
+static int handle_left(t_vars *vars, int x, int y);
+static int	handle_right(t_vars *vars, int x, int y);
+int	handle_keypress(int keycode, t_vars *vars);
+static int	keyboard_ad(t_vars *vars, int keycode);
+static int	keyboard_ws(t_vars *vars, int keycode);
 
-static int handle_up(t_vars *game, int x, int y)
+static int handle_up(t_vars *vars, int x, int y)
 {
-	if (game->map[y - 1][x] != '1' && game->map[y - 1][x] != 'E')
+	if (vars->map[y - 1][x] != '1' && vars->map[y - 1][x] != 'E')
 	{
-		if (game->map[y - 1][x] == 'C')
-			game->count_c--;
-		game->map[y - 1][x] = 'P';
-		game->map[y][x] = '0';
-		game->player_y -= 1;
-		game->counter++;
-		ft_printf("counter:%d\n", game->counter);
+		if (vars->map[y - 1][x] == 'C')
+			vars->count_c--;
+		vars->map[y - 1][x] = 'P';
+		vars->map[y][x] = '0';
+		vars->player_y -= 1;
+		vars->counter++;
+		ft_printf("counter:%d\n", vars->counter);
 	}
-	if (game->map[y -1][x] == 'E' && game->count_c == 0)
+	if (vars->map[y -1][x] == 'E' && vars->count_c == 0)
 	{
 		ft_printf("You won\n");
-		exit (1);
+		clean_exit(vars);
 	}
-	render_map(game);
-	//printf("steps:%i\n", game->counter);
-	//printf("collectables left: %i\n", game->collectables);
+	render_map(vars);
 	return (0);
 }
 
-static int	handle_down(t_vars *game, int x, int y)
+static int	handle_down(t_vars *vars, int x, int y)
 {
-	if (game->map[y + 1][x] != '1' && game->map[y + 1][x] != 'E')
+	if (vars->map[y + 1][x] != '1' && vars->map[y + 1][x] != 'E')
 	{
-		if (game->map[y + 1][x] == 'C')
-			game->count_c--;
-		game->map[y + 1][x] = 'P';
-		game->map[y][x] = '0';
-		game->player_y += 1;
-		game->counter++;
-		ft_printf("counter:%d\n", game->counter);
+		if (vars->map[y + 1][x] == 'C')
+			vars->count_c--;
+		vars->map[y + 1][x] = 'P';
+		vars->map[y][x] = '0';
+		vars->player_y += 1;
+		vars->counter++;
+		ft_printf("counter:%d\n", vars->counter);
 	}
-	if (game->map[y + 1][x] == 'E' && game->count_c == 0)
+	if (vars->map[y + 1][x] == 'E' && vars->count_c == 0)
 	{
 		ft_printf("You won\n");
-		exit (1);
+		clean_exit(vars);
 	}
-	render_map(game);
-	//printf("steps:%i\n", game->counter);
-	//printf("collectables left: %i\n", game->collectables);
+	render_map(vars);
 	return (0);
 }
 
-static int handle_left(t_vars *game, int x, int y)
+static int handle_left(t_vars *vars, int x, int y)
 {
-	if (game->map[y][x - 1] != '1' && game->map[y][x - 1] != 'E')
+	if (vars->map[y][x - 1] != '1' && vars->map[y][x - 1] != 'E')
 	{
-		if (game->map[y][x - 1] == 'C')
-			game->count_c--;
-		game->map[y][x - 1] = 'P';
-		game->map[y][x] = '0';
-		game->player_x -= 1;
-		game->counter++;
-		ft_printf("counter:%d\n", game->counter);
+		if (vars->map[y][x - 1] == 'C')
+			vars->count_c--;
+		vars->map[y][x - 1] = 'P';
+		vars->map[y][x] = '0';
+		vars->player_x -= 1;
+		vars->counter++;
+		ft_printf("counter:%d\n", vars->counter);
 	}
-	if (game->map[y][x - 1] == 'E' && game->count_c == 0)
+	if (vars->map[y][x - 1] == 'E' && vars->count_c == 0)
 	{
 		ft_printf("You won\n");
-		exit (1);
+		clean_exit(vars);
 	}
-	render_map(game);
-		//printf("steps:%i\n", game->counter);
-	//printf("collectables remaining: %i\n", game->collectables);
+	render_map(vars);
 	return (0);
 }
 
-static int	handle_right(t_vars *game, int x, int y)
+static int	handle_right(t_vars *vars, int x, int y)
 {
-	if (game->map[y][x + 1] != '1' && game->map[y][x+ 1] != 'E')
+	if (vars->map[y][x + 1] != '1' && vars->map[y][x+ 1] != 'E')
 	{
-		if (game->map[y][x + 1] == 'C')
-			game->count_c--;
-		game->map[y][x + 1] = 'P';
-		game->map[y][x] = '0';
+		if (vars->map[y][x + 1] == 'C')
+			vars->count_c--;
+		vars->map[y][x + 1] = 'P';
+		vars->map[y][x] = '0';
 
-		game->player_x += 1;
-		game->counter++;
-		ft_printf("counter:%d\n", game->counter);
+		vars->player_x += 1;
+		vars->counter++;
+		ft_printf("counter:%d\n", vars->counter);
 	}
-	if (game->map[y][x + 1] == 'E' && game->count_c == 0)
+	if (vars->map[y][x + 1] == 'E' && vars->count_c == 0)
 	{
 		ft_printf("You won\n");
-		exit (1);
+		clean_exit(vars);
 	}
-	render_map(game);
-	//printf("steps:%i\n", game->counter);
-	//printf("collectables remaining: %i\n", game->collectables);
+	render_map(vars);
 	return (0);
 }
 
-static int	keyboard_ad(t_vars *game, int keycode)
+static int	keyboard_ad(t_vars *vars, int keycode)
 {
 	int	x;
 	int	y;
 
-	x = game->player_x;
-	y = game->player_y;
+	x = vars->player_x;
+	y = vars->player_y;
 	if (keycode == 0)
 	{
-		return (handle_left(game, x, y ));
+		return (handle_left(vars, x, y ));
 	}
 	else if (keycode == 2)
 	{
-		return (handle_right(game, x, y));
+		return (handle_right(vars, x, y));
 	}
 	return (1);
 }
 
-static int	keyboard_ws(t_vars *game, int keycode)
+static int	keyboard_ws(t_vars *vars, int keycode)
 {
 	int	x;
 	int	y;
 
-	x = game->player_x;
-	y = game->player_y;
+	x = vars->player_x;
+	y = vars->player_y;
 	if (keycode == 13)
 	{
-		return (handle_up(game, x, y));
+		return (handle_up(vars, x, y));
 	}
 	else if (keycode == 1)
 	{
-		return (handle_down(game, x, y));
+		return (handle_down(vars, x, y));
 	}
 	return (1);
 }
 
-int	handle_keypress(int keycode, t_vars *game)
+int	handle_keypress(int keycode, t_vars *vars)
 {
-	ft_printf("collectables:%d\n", game->count_c);
+	ft_printf("collectables:%d\n", vars->count_c);
 	if (keycode == 53)
-		mlx_destroy_window(game->mlx, game->win);
+		clean_exit(vars);
 	if (keycode == 13)
-		keyboard_ws(game, keycode);
+		keyboard_ws(vars, keycode);
 	else if (keycode == 1)
-		keyboard_ws(game, keycode);
+		keyboard_ws(vars, keycode);
 	else if (keycode == 0)
-		keyboard_ad(game, keycode);
+		keyboard_ad(vars, keycode);
 	else if (keycode == 2)
-		keyboard_ad(game, keycode);
+		keyboard_ad(vars, keycode);
 	return (1);
 }
 

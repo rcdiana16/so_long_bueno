@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:09:23 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 18:27:38 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 22:10:45 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,22 +102,22 @@ void	render_map(t_vars *vars)
 	}
 }
 
-int	find_p_y_start(t_vars *game)
+int	find_p_y_start(t_vars *vars)
 {
 	int	y;
 	int	x;
 
 	y = 0;
 	x = 0;
-	while(game->map[y])//recorre cada fila (alto) del mapa
+	while(vars->map[y])//recorre cada fila (alto) del mapa
 	{
 		x = 0;
-		while (game->map[y][x])//recorre cada caracter de esa fila
+		while (vars->map[y][x])//recorre cada caracter de esa fila
 		{
-			if (game->map[y][x] == 'P')
+			if (vars->map[y][x] == 'P')
 			{
-				game->player_y = y;
-				game->player_x = x;
+				vars->player_y = y;
+				vars->player_x = x;
 			}
 			x++;
 		}

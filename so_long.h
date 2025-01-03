@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:06:51 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 18:03:02 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 22:34:22 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ void	render_tile_other(t_vars *vars, char tile, int x, int y);
 void	render_tile(t_vars *vars, char tile, int x, int y);
 void	render_row(t_vars *vars, int y);
 void	render_map(t_vars *vars);
-int		handle_keypress(int keycode, t_vars *game);
+int		handle_keypress(int keycode, t_vars *vars);
 int		handle_valid_map_error(t_vars *vars);//es necesario? esta en main.c
 int		get_map_height(t_vars *vars);//es necesario? esta en main.c
-void	correct_character(t_vars *game);
-void	check_errors(t_vars *game);
+void	correct_character(t_vars *vars);
+void	check_errors(t_vars *vars);
 int		find_p_y_start(t_vars *map);
+int		clean_exit(t_vars *vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:12:52 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 19:12:03 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/02 22:25:55 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
 	vars.map = read_map(argv[1]);
 	check_map(&vars);
 	if (handle_valid_map_error(&vars) != 1)
-		//exit(1);
+		//exit_game(vars);
 	check_errors(&vars);
 	find_p_y_start(&vars);
 	vars.counter = 0;
@@ -107,7 +107,6 @@ int main(int argc, char **argv)
 	vars.map_height = get_map_height(&vars) * vars.img_heigth;
 	vars.win = mlx_new_window(vars.mlx,  vars.map_width, vars.map_height, \
 	"so_long");
-	
 	render_map(&vars);
 	mlx_key_hook(vars.win, handle_keypress, &vars);
 	mlx_loop(vars.mlx);
