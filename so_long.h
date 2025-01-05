@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:06:51 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 22:34:22 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/03 19:24:44 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ void	correct_character(t_vars *vars);
 void	check_errors(t_vars *vars);
 int		find_p_y_start(t_vars *map);
 int		clean_exit(t_vars *vars);
+void	free_map(t_vars vars);
+
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:33 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 22:45:09 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/03 19:09:36 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_vars{
 	int		count_e;
 	int		count_c;
 	int		count_p;
+	int		exit_found;
 }	t_vars;
 
 typedef struct	s_data {

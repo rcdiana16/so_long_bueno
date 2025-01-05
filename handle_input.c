@@ -6,20 +6,20 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:31:49 by diana             #+#    #+#             */
-/*   Updated: 2025/01/02 23:06:11 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/03 16:51:42 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "structures.h"
 
-static int handle_up(t_vars *vars, int x, int y);
+/*static int handle_up(t_vars *vars, int x, int y);
 static int	handle_down(t_vars *vars, int x, int y);
 static int handle_left(t_vars *vars, int x, int y);
 static int	handle_right(t_vars *vars, int x, int y);
 int	handle_keypress(int keycode, t_vars *vars);
 static int	keyboard_ad(t_vars *vars, int keycode);
-static int	keyboard_ws(t_vars *vars, int keycode);
+static int	keyboard_ws(t_vars *vars, int keycode);*/
 
 static int handle_up(t_vars *vars, int x, int y)
 {
