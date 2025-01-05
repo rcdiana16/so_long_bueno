@@ -6,42 +6,11 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:48:30 by diana             #+#    #+#             */
-/*   Updated: 2025/01/03 19:24:29 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/05 23:07:53 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	free_map(t_vars vars)
-{
-	int	i;
-
-	i = 0;
-	while (i < vars.rows)
-	{
-		free(vars.map[i]);
-		i++;
-	}	
-	free(vars.map);
-}
-
-int	clean_exit(t_vars *vars)
-{
-	/*if (vars->img.background)
-		mlx_destroy_image(vars->mlx, vars->img.background);
-	mlx_destroy_image(vars->mlx, vars->img.wall);
-	vars->img.wall = NULL;
-	mlx_destroy_image(vars->mlx, vars->img.collectible);
-	vars->img.collectible = NULL;
-	mlx_destroy_image(vars->mlx, vars->img.player);
-	vars->img.player = NULL;
-	mlx_destroy_image(vars->mlx, vars->img.exit);
-	vars->img.exit = NULL;
-	mlx_destroy_window(vars->mlx, vars->win);
-	vars->win = NULL;*/
-	free_map(*vars);
-	exit(0);
-}
 
 static int	wall_hori(t_vars *vars)
 {
@@ -98,7 +67,7 @@ void	correct_walls(t_vars *vars)
 	wallshorizontal = wall_hori(vars);
 	if (wallshorizontal == 1 || wallsvertical == 1)
 	{
-		printf("\nThis map is missing the walls\n");
+		ft_printf("\nThis map is missing the walls\n");
 		clean_exit(vars);
 	}
 }
@@ -111,7 +80,7 @@ static void	count_checker(t_vars *vars, int height, int width)
 			vars->map[height][width] != 'E' && \
 			vars->map[height][width] != 'C')
 	{
-		printf("\nError invalid character!%c\n", vars->map[height][width]);
+		ft_printf("\nError invalid character!%c\n", vars->map[height][width]);
 		clean_exit(vars);
 	}
 }
@@ -133,114 +102,3 @@ void	correct_character(t_vars *vars)
 		height++;
 	}
 }
-/*
-int	find_exit(t_vars *vars)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	x = 0;
-	while(vars->map[y])
-	{
-		x = 0;
-		while (vars->map[y][x])
-		{
-			if (vars->map[y][x] == 'E')
-			{
-				vars->exit_y = y;
-				vars->exit_x = x;
-				ft_printf("la salida esta en:%d, %d\n", y, x);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
-*/
-int	explore_map(t_vars *vars, char **map, int x_start, int y_start)
-{
-	int	path_found;
-
-	if (x_start < 0 || y_start < 0 || x_start > vars->map_width || y_start > vars->map_height)
-		return (0);
-	if (map[y_start][x_start] == '1' || map[y_start][x_start] == 'V')
-		return (0);
-	if (map[y_start][x_start] == 'C')
-		vars->count_c--;
-	if (map[y_start][x_start] == 'E')
-		vars->exit_found = 1;
-	if (vars->exit_found == 1 && vars->count_c == 0)
-		return (1);
-	map[y_start][x_start] = 'V';
-	path_found = 0;
-	path_found = explore_map(vars, map, x_start + 1, y_start);
-	if (!path_found)
-		path_found = explore_map(vars, map, x_start - 1, y_start);
-	if (!path_found)
-		path_found = explore_map(vars, map, x_start, y_start + 1);
-	if (!path_found)
-		path_found = explore_map(vars, map, x_start, y_start - 1);
-	return (path_found);
-}
-
-char	**duplicate_map(t_vars *vars)
-{
-	int		i;
-	char	**new_map;
-
-	new_map = malloc(sizeof(char *) * (vars->map_height + 1));
-	if (!new_map)
-		return (NULL);
-	i = 0;
-	while (i < vars->map_height)
-	{
-		new_map[i] = ft_strdup(vars->map[i]);
-		if (!new_map[i])
-			return(NULL);
-		i++;
-	}
-	new_map[vars->map_height] = NULL;
-	return (new_map);
-}
-int	is_map_solvable(t_vars *vars)
-{
-	char	**new_map;
-
-	new_map = duplicate_map(vars);
-	if (explore_map(vars, new_map, vars->player_x, vars->player_y) != 1)
-		ft_printf("map no solvable\n");
-	return (0);
-}
-
-void	check_errors(t_vars *vars)
-{
-	vars->exit_found = 0;
-	correct_walls(vars);
-	correct_character(vars);
-	is_map_solvable(vars);
-}
-
-
-/* funcion mia 
-int	is_exit_blocked(t_vars *vars)
-{
-	ft_printf("%d\n", vars->exit_y);
-	if (vars->exit_y - 1 >= 0 && vars->exit_x - 1 < vars->map_width)
-	{
-		ft_printf("yesir\n");
-		if (vars->map[vars->exit_y - 1] [vars->exit_x] == '1' && \
-			vars->map[vars->exit_y + 1] [vars->exit_x] == '1' && \
-			vars->map[vars->exit_y][vars->exit_x - 1] == '1' &&  \
-			vars->map[vars->exit_y][vars->exit_x + 1] == '1')
-			{
-				ft_printf("The exit is not accesible\n");
-				clean_exit(vars);
-				return (1);
-			}
-	}
-	return (0);
-}
-
-*/

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:06:51 by diana             #+#    #+#             */
-/*   Updated: 2025/01/03 19:24:44 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/05 23:05:51 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,25 @@ void	render_tile(t_vars *vars, char tile, int x, int y);
 void	render_row(t_vars *vars, int y);
 void	render_map(t_vars *vars);
 int		handle_keypress(int keycode, t_vars *vars);
-int		handle_valid_map_error(t_vars *vars);//es necesario? esta en main.c
-int		get_map_height(t_vars *vars);//es necesario? esta en main.c
 void	correct_character(t_vars *vars);
 void	check_errors(t_vars *vars);
 int		find_p_y_start(t_vars *map);
 int		clean_exit(t_vars *vars);
 void	free_map(t_vars vars);
-
-
+int		check_extentio(char *argv);
+int		check_map(t_vars *map);
+void	count_map_elements(t_vars *map);
+int		get_map_height(t_vars *vars);
+int		handle_valid_map_error(t_vars *vars);
+int 	handle_up(t_vars *vars, int x, int y);
+int		handle_down(t_vars *vars, int x, int y);
+int 	handle_left(t_vars *vars, int x, int y);
+int		handle_right(t_vars *vars, int x, int y);
+int		keyboard_ad(t_vars *vars, int keycode);
+int		keyboard_ws(t_vars *vars, int keycode);
+void	correct_walls(t_vars *vars);
+int		is_map_solvable(t_vars *vars);
+char	**duplicate_map(t_vars *vars);
+int		explore_map(t_vars *vars, char **map, int x_start, int y_start);
 
 #endif
