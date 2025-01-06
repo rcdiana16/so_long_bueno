@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:06:51 by diana             #+#    #+#             */
-/*   Updated: 2025/01/05 23:05:51 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 19:53:28 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	correct_walls(t_vars *vars);
 int		is_map_solvable(t_vars *vars);
 char	**duplicate_map(t_vars *vars);
 int		explore_map(t_vars *vars, char **map, int x_start, int y_start);
+void	render_background(t_vars *vars);
 
 #endif

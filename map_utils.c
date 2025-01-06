@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:09:23 by diana             #+#    #+#             */
-/*   Updated: 2025/01/05 23:30:20 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 20:14:12 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,30 @@ void	render_map(t_vars *vars)
 	int	y;
 
 	y = 0;
+	//render_background(vars);
 	while (vars->map[y])
 	{
 		render_row(vars, y);
+		y++;
+	}
+}
+
+void	render_background(t_vars *vars)
+{
+	int	y;
+	int	x;
+
+	x = 0;
+	y = 0;
+	while (vars->map[y])
+	{
+		x = 0;
+		while (vars->map[y][x])
+		{
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->img.background, \
+			x * vars->img_width, y * vars->img_heigth);
+			x++;
+		}
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 09:35:23 by diana             #+#    #+#             */
-/*   Updated: 2025/01/05 23:27:41 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 20:12:21 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	load_images(t_vars *vars)
 	vars->img.exit = mlx_xpm_file_to_image(vars->mlx, \
 	"images/exit.xpm", &vars->img_width, &vars->img_heigth);
 	vars->img.player = mlx_xpm_file_to_image(vars->mlx, \
-	"images/player.xpm", &vars->img_width, &vars->img_heigth);
+	"images/player1.xpm", &vars->img_width, &vars->img_heigth);
 }
