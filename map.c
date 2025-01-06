@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cosmos <cosmos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:48:10 by diana             #+#    #+#             */
-/*   Updated: 2025/01/05 23:31:11 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 21:03:17 by cosmos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,21 @@ char	**read_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-	temp_map = ft_strdup("");
+	temp_map = "";
 	line = get_next_line(fd);
 	temp_map = ft_strjoin(temp_map, line);
+	free(line);
 	while ((line != NULL))
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		temp_map = ft_strjoin(temp_map, line);
+		temp_map = ft_strjoin_free(temp_map, line);
 		free(line);
 	}
 	close(fd);
 	map = ft_split(temp_map, '\n');
+	free(line);
 	free(temp_map);
 	return (map);
 }
@@ -94,7 +96,9 @@ int	is_map_solvable(t_vars *vars)
 	if (explore_map(vars, new_map, vars->player_x, vars->player_y) != 1)
 	{
 		ft_printf("map no solvable\n");
+		free_map(new_map);
 		clean_exit(vars);
 	}
+	free_map(new_map);
 	return (0);
 }

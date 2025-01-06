@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cosmos <cosmos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:06:51 by diana             #+#    #+#             */
-/*   Updated: 2025/01/06 19:53:28 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 21:36:13 by cosmos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	correct_character(t_vars *vars);
 void	check_errors(t_vars *vars);
 int		find_p_y_start(t_vars *map);
 int		clean_exit(t_vars *vars);
-void	free_map(t_vars vars);
+void	free_map(char ** map);
 int		check_extentio(char *argv);
 int		check_map(t_vars *map);
 void	count_map_elements(t_vars *map);
