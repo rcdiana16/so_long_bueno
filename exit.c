@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cosmos <cosmos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:27:09 by diana             #+#    #+#             */
-/*   Updated: 2025/01/05 21:33:49 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 21:31:41 by cosmos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(t_vars vars)
+void	free_map(char **map)
 {
 	int	i;
 
 	i = 0;
-	while (i < vars.rows)
+	while (map[i])
 	{
-		free(vars.map[i]);
+		free(map[i]);
 		i++;
 	}
-	free(vars.map);
+	free(map);
 }
 
 int	clean_exit(t_vars *vars)
 {
+	free_map(vars->map);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
 	if (vars->img.background)
 		mlx_destroy_image(vars->mlx, vars->img.background);
 	if (vars->img.wall)
@@ -37,8 +40,6 @@ int	clean_exit(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->img.player);
 	if (vars->img.exit)
 		mlx_destroy_image(vars->mlx, vars->img.exit);
-	if (vars->win)
-		mlx_destroy_window(vars->mlx, vars->win);
-	free_map(*vars);
+	free(vars->mlx);
 	exit(0);
 }

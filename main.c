@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cosmos <cosmos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:12:52 by diana             #+#    #+#             */
-/*   Updated: 2025/01/06 20:07:40 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 21:32:58 by cosmos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 
 	if (handle_arguments(argc))
 		return (1);
+	ft_bzero(&vars, sizeof(t_vars));
 	check_extentio(argv[1]);
 	vars.map = read_map(argv[1]);
 	check_map(&vars);
@@ -43,7 +44,7 @@ int	main(int argc, char **argv)
 	"so_long");
 	render_map(&vars);
 	mlx_key_hook(vars.win, handle_keypress, &vars);
-	mlx_hook(vars.win, 17, 0, clean_exit, &vars);
+	mlx_hook(vars.win, 17, 0L, clean_exit, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

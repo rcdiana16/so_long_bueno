@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cosmos <cosmos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:46:43 by diana             #+#    #+#             */
-/*   Updated: 2025/01/06 00:00:00 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/06 20:45:51 by cosmos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ int	check_extentio(char *argv)
 	char	*ext;
 
 	ext = ft_strchr(argv, '.');
+	if (!ext)
+	{
+		ft_printf("not good extention\n");
+		exit (1);
+	}
+		
 	if (ft_strncmp(ext, ".ber", 4) != 0)
 	{
 		ft_printf("not good extention\n");
