@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:48:30 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 16:44:11 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 20:54:43 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	check_extentio(char *argv)
 	ext = ft_strchr(argv, '.');
 	if (!ext)
 	{
-		ft_printf("not good extention\n");
+		ft_printf("Error\nNot good extention\n");
 		exit (1);
 	}
 		
 	if (ft_strncmp(ext, ".ber", 4) != 0)
 	{
-		ft_printf("not good extention\n");
+		ft_printf("Error\nNot good extention\n");
 		exit(1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:48:30 by diana             #+#    #+#             */
-/*   Updated: 2025/01/05 23:07:53 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 20:55:59 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	wall_hori(t_vars *vars)
 	{
 		if (vars->map[vars->map_height -1][x] != '1')
 		{
-			ft_printf("last ine not full 1\n");
+			ft_printf("Error\nLast ine not full 1\n");
 			return (1);
 		}
 		x++;
@@ -45,12 +45,12 @@ int	wall_vert(t_vars *vars)
 	{
 		if (vars->map[height][0] != '1')
 		{
-			ft_printf("1 column not full 1\n");
+			ft_printf("Error\n1 column not full 1\n");
 			return (1);
 		}
 		if (vars->map[height][vars->map_width -1] != '1')
 		{
-			ft_printf("last column not full 1\n");
+			ft_printf("Error\nlast column not full 1\n");
 			return (1);
 		}
 		height++;
@@ -67,7 +67,7 @@ void	correct_walls(t_vars *vars)
 	wallshorizontal = wall_hori(vars);
 	if (wallshorizontal == 1 || wallsvertical == 1)
 	{
-		ft_printf("\nThis map is missing the walls\n");
+		ft_printf("\nError\nThis map is missing the walls\n");
 		clean_exit(vars);
 	}
 }
@@ -80,7 +80,7 @@ static void	count_checker(t_vars *vars, int height, int width)
 			vars->map[height][width] != 'E' && \
 			vars->map[height][width] != 'C')
 	{
-		ft_printf("\nError invalid character!%c\n", vars->map[height][width]);
+		ft_printf("\nError\nInvalid character!%c\n", vars->map[height][width]);
 		clean_exit(vars);
 	}
 }

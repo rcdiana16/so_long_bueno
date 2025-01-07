@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:12:52 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 16:44:47 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 20:54:17 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	handle_arguments(int argc)
 {
 	if (argc != 2)
 	{
-		ft_printf("Error in the number of arguments\n");
+		ft_printf("Error\n Error in the number of arguments\n");
 		return (1);
 	}
 	return (0);
