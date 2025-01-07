@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:48:10 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 21:15:54 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 21:24:51 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,35 +73,6 @@ int	explore_map(t_vars *vars, char **map, int x_start, int y_start)
 		path_found = explore_map(vars, map, x_start, y_start - 1);
 	return (path_found);
 }
-/*
-int	explore_map(t_vars *vars, char **map, int x_start, int y_start)
-{
-	int	path_found;
-
-	if (x_start < 0 || y_start < 0 || x_start > vars->map_width || \
-	y_start > vars->map_height)
-		return (0);
-	if (map[y_start][x_start] == 'E')
-		vars->exit_found = 1;
-	if (map[y_start][x_start] == '1' || map[y_start][x_start] == 'V' \
-		|| map[y_start][x_start] == 'E')
-		return (0);
-	if (map[y_start][x_start] == 'C')
-		vars->game_c_count--;
-	if (vars->exit_found == 1 && vars->game_c_count == 0)
-		return (1);
-	map[y_start][x_start] = 'V';
-	path_found = 0;
-	path_found = explore_map(vars, map, x_start + 1, y_start);
-	if (!path_found)
-		path_found = explore_map(vars, map, x_start - 1, y_start);
-	if (!path_found)
-		path_found = explore_map(vars, map, x_start, y_start + 1);
-	if (!path_found)
-		path_found = explore_map(vars, map, x_start, y_start - 1);
-	return (path_found);
-}
-*/
 
 char	**duplicate_map(t_vars *vars)
 {

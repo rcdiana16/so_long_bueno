@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:48:30 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 20:54:43 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 21:30:03 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	check_extentio(char *argv)
 		ft_printf("Error\nNot good extention\n");
 		exit (1);
 	}
-		
 	if (ft_strncmp(ext, ".ber", 4) != 0)
 	{
 		ft_printf("Error\nNot good extention\n");
@@ -60,4 +59,14 @@ void	check_errors(t_vars *vars)
 	correct_walls(vars);
 	correct_character(vars);
 	is_map_solvable(vars);
+}
+
+int	get_map_height(t_vars *vars)
+{
+	int	height;
+
+	height = 0;
+	while (vars->map[height])
+		height++;
+	return (height);
 }

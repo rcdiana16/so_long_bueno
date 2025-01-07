@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:09:23 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 16:44:59 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 21:31:27 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,6 @@ int	find_p_y_start(t_vars *vars)
 		y++;
 	}
 	return (0);
-}
-
-int	get_map_height(t_vars *vars)
-{
-	int	height;
-
-	height = 0;
-	while (vars->map[height])
-		height++;
-	return (height);
 }
 
 void	count_map_elements(t_vars *map)
