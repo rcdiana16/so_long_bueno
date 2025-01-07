@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cosmos <cosmos@student.42.fr>              +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:48:10 by diana             #+#    #+#             */
-/*   Updated: 2025/01/06 21:03:17 by cosmos           ###   ########.fr       */
+/*   Updated: 2025/01/06 21:54:35 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int	explore_map(t_vars *vars, char **map, int x_start, int y_start)
 	if (x_start < 0 || y_start < 0 || x_start > vars->map_width || \
 	y_start > vars->map_height)
 		return (0);
-	if (map[y_start][x_start] == '1' || map[y_start][x_start] == 'V')
+	if (map[y_start][x_start] == 'E')
+		vars->exit_found = 1;
+	if (map[y_start][x_start] == '1' || map[y_start][x_start] == 'V' || map[y_start][x_start] == 'E')
 		return (0);
 	if (map[y_start][x_start] == 'C')
 		vars->game_c_count--;
-	if (map[y_start][x_start] == 'E')
-		vars->exit_found = 1;
 	if (vars->exit_found == 1 && vars->game_c_count == 0)
 		return (1);
 	map[y_start][x_start] = 'V';
