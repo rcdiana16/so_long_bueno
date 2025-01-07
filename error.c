@@ -6,13 +6,13 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:48:30 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 20:55:59 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 22:25:29 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	wall_hori(t_vars *vars)
+int	wall_hori(t_vars *vars)
 {
 	int	x;
 
@@ -72,7 +72,7 @@ void	correct_walls(t_vars *vars)
 	}
 }
 
-static void	count_checker(t_vars *vars, int height, int width)
+void	count_checker(t_vars *vars, int height, int width)
 {
 	if (vars->map[height][width] != '1' && \
 			vars->map[height][width] != '0' && \

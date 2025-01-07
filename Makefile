@@ -6,7 +6,7 @@
 #    By: diana <diana@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/11 18:30:33 by diana             #+#    #+#              #
-#    Updated: 2025/01/05 23:15:02 by diana            ###   ########.fr        #
+#    Updated: 2025/01/07 22:23:24 by diana            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC =	main.c \
 		handle_input.c \
 		exit.c \
 		map.c \
-		error_2.c \
+		error_height.c \
 		handle_input_2.c \
 		render.c \
 
