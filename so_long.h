@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:06:51 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 22:25:46 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/07 22:31:59 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # define WIN_HEIGHT 600
 # define WIN_NAME "so_long"
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "mlx/mlx.h"
-#include "structures.h"
-#include "libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include "mlx/mlx.h"
+# include "structures.h"
+# include "libft/libft.h"
 
 void	load_images(t_vars *vars);
 char	**read_map(char *file);
