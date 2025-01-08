@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:12:52 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 20:54:17 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/08 21:46:31 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 	ft_bzero(&vars, sizeof(t_vars));
 	check_extentio(argv[1]);
 	vars.map = read_map(argv[1]);
+	if (vars.map == NULL)
+		return (0);
 	check_map(&vars);
 	handle_valid_map_error(&vars);
 	find_p_y_start(&vars);

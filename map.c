@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:48:10 by diana             #+#    #+#             */
-/*   Updated: 2025/01/08 16:24:38 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/08 21:47:15 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	**read_map(char *file)
 		free(line);
 	}
 	close(fd);
+	if (temp_map == NULL)
+		return (NULL);
 	map = ft_split(temp_map, '\n');
 	free(line);
 	free(temp_map);
