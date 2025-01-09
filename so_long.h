@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:06:51 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 22:31:59 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/09 11:23:57 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 void	load_images(t_vars *vars);
 char	**read_map(char *file);
+void	check_tmp_map(char *tmp_map, int fd);
 void	render_tile_wall(t_vars *vars, int x, int y);
 void	render_tile_background(t_vars *vars, int x, int y);
 void	render_tile_other(t_vars *vars, char tile, int x, int y);

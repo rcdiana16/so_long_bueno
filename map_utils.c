@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:09:23 by diana             #+#    #+#             */
-/*   Updated: 2025/01/07 21:31:27 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/09 10:41:19 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,9 @@ void	render_map(t_vars *vars)
 	int	y;
 
 	y = 0;
-	//render_background(vars);
 	while (vars->map[y])
 	{
 		render_row(vars, y);
-		y++;
-	}
-}
-
-void	render_background(t_vars *vars)
-{
-	int	y;
-	int	x;
-
-	x = 0;
-	y = 0;
-	while (y < vars->map_height)
-	{
-		x = 0;
-		while (x < vars->map_width)
-		{
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img.background, \
-			x * vars->img_width, y * vars->img_heigth);
-			x++;
-		}
 		y++;
 	}
 }

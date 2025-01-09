@@ -3,45 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:48:10 by diana             #+#    #+#             */
-/*   Updated: 2025/01/08 21:47:15 by diana            ###   ########.fr       */
+/*   Updated: 2025/01/09 11:29:39 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	**read_map(char *file)
-{
-	int		fd;
-	char	*line;
-	char	**map;
-	char	*temp_map;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
-	temp_map = "";
-	line = get_next_line(fd);
-	temp_map = ft_strjoin(temp_map, line);
-	free(line);
-	while ((line != NULL))
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		temp_map = ft_strjoin_free(temp_map, line);
-		free(line);
-	}
-	close(fd);
-	if (temp_map == NULL)
-		return (NULL);
-	map = ft_split(temp_map, '\n');
-	free(line);
-	free(temp_map);
-	return (map);
-}
 
 int	validate_and_update_map(t_vars *vars, char **map, int x, int y)
 {
